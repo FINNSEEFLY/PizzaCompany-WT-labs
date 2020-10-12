@@ -11,7 +11,6 @@ import java.io.IOException;
 
 public class GoToMainCommand implements Command {
 
-
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher dispatcher = request.getRequestDispatcher(LinkPath.MAIN_PAGE);

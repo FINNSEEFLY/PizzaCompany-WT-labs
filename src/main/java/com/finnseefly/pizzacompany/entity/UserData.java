@@ -1,26 +1,27 @@
 package com.finnseefly.pizzacompany.entity;
 
 import java.io.Serializable;
+
 import java.util.Objects;
 
 public class UserData implements Serializable {
 
     private static final long serialVersionUID = -4337805810905229435L;
 
-    private int id;
+    private long id;
     private String login;
     private String password;
     private String email;
-    private String name;
-    private String surname;
+    private String firstname;
+    private String lastname;
 
-    public UserData(int id, String login, String password, String email, String name, String surname) {
+    public UserData(int id, String login, String password, String email, String firstname, String surname) {
         this.id = id;
         this.login = login;
         this.password = password;
         this.email = email;
-        this.name = name;
-        this.surname = surname;
+        this.firstname = firstname;
+        this.lastname = surname;
     }
 
     public UserData() {
@@ -30,52 +31,52 @@ public class UserData implements Serializable {
         return serialVersionUID;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getLogin() {
         return login;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public void setLogin(String login) {
         this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
     public void setPassword(String password) {
         this.password = password;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
     public void setEmail(String email) {
         this.email = email;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
     @Override
@@ -87,8 +88,8 @@ public class UserData implements Serializable {
                 login.equals(userData.login) &&
                 password.equals(userData.password) &&
                 email.equals(userData.email) &&
-                name.equals(userData.name) &&
-                surname.equals(userData.surname);
+                firstname.equals(userData.firstname) &&
+                Objects.equals(lastname, userData.lastname);
     }
 
     @Override
@@ -96,11 +97,11 @@ public class UserData implements Serializable {
         final int prime = 97;
         int result = 1;
         result = prime * result + ((email == null) ? 0 : email.hashCode());
-        result = prime * result + id;
+        result = prime * result + (int) (id ^ (id >>> 32));
         result = prime * result + ((login == null) ? 0 : login.hashCode());
-        result = prime * result + ((name == null) ? 0 : name.hashCode());
+        result = prime * result + ((firstname == null) ? 0 : firstname.hashCode());
         result = prime * result + ((password == null) ? 0 : password.hashCode());
-        result = prime * result + ((surname == null) ? 0 : surname.hashCode());
+        result = prime * result + ((lastname == null) ? 0 : lastname.hashCode());
         return result;
     }
 
@@ -111,8 +112,8 @@ public class UserData implements Serializable {
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
-                ", name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
+                ", firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
                 '}';
     }
 }

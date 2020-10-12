@@ -1,38 +1,39 @@
 package com.finnseefly.pizzacompany.entity;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class User implements Serializable {
 
     private  static final long serialVersionUID = -7883421665886134255L;
 
-    private int id;
-    private String name;
-    private String surname;
+    private long id;
+    private String firstname;
+    private String lastname;
     private String email;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
-    public String getSurname() {
-        return surname;
+    public String getLastname() {
+        return lastname;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
     public String getEmail() {
@@ -44,33 +45,33 @@ public class User implements Serializable {
     }
 
     @Override
-    public int hashCode() {
-        final int prime = 97;
-        int result = 1;
-        result = prime * result + ((email == null) ? 0 : email.hashCode());
-        result = prime * result + id;
-        result = prime * result + ((name == null) ? 0 : email.hashCode());
-        result = prime * result + ((surname == null) ? 0 : surname.hashCode());
-        return result;
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
         return id == user.id &&
-                name.equals(user.name) &&
-                surname.equals(user.surname) &&
+                firstname.equals(user.firstname) &&
+                Objects.equals(lastname, user.lastname) &&
                 email.equals(user.email);
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 97;
+        int result = 1;
+        result = prime * result + ((email == null) ? 0 : email.hashCode());
+        result = prime * result + (int) (id ^ (id >>> 32));
+        result = prime * result + ((firstname == null) ? 0 : email.hashCode());
+        result = prime * result + ((lastname == null) ? 0 : lastname.hashCode());
+        return result;
     }
 
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
+                ", firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
                 ", email='" + email + '\'' +
                 '}';
     }

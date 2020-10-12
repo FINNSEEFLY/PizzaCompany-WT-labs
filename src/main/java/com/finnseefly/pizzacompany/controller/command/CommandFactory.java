@@ -11,7 +11,7 @@ public class CommandFactory {
 
     public CommandFactory() {
         commands.put(goToMainCommand, new GoToMainCommand());
-        //TODO Команды
+        //TODO Commands
     }
 
     public Command getCommand(String commandName) {
