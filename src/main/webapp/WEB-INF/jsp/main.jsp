@@ -2,25 +2,19 @@
 <html>
 <head>
 <%@include file="../head/defaultheader.jsp" %>
-    <title>Pizza Company LLC</title>
+    <fmt:message bundle="${loc}" key="local.title.main" var="mainTitle"/>
+    <title>${mainTitle}</title>
 </head>
 <body>
 <div class="grid">
-    <header class="header">
-        <nav class="nav">
-
-        </nav>
-    </header>
+<%@include file="header.jsp"%>
     <article class="content">
 
     </article>
     <section class="rightBox">
 
     </section>
-    <%--TODO content--%>
-    <footer class="footer">
-        PizzaCompany LLC All rights reserved © 1918-2020
-    </footer>
+<%@include file="footer.jsp"%>
 </div>
 </body>
 </html>

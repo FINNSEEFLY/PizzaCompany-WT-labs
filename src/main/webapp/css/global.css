@@ -10,7 +10,108 @@
     transition: background-color 0.3s ease;
 }
 
+.body {
+    background-color: #FFF;
+    min-height: 100%;
+    color: rgb(87, 87, 87)
+}
 
+h1, h2, h3, h4, h5, h6 {
+    color: rgb(37, 37, 37);
+}
+
+.nav a:hover, .language_elem:hover {
+    background-color: #fbbbbb;
+}
+.nav a#active {
+    background-color: #ff0000;
+    color: #FFF;
+}
+
+.nav a, .language_elem {
+    text-decoration: none;
+    color: #212121;
+    font-size: 1.5em;
+    align-self: center;
+}
+
+.footer {
+    grid-area: f;
+    background: rgba(77, 77, 77, 0.404);
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    border-radius: 12px 12px 0px 0px;
+}
+
+.header {
+    grid-area: h;
+    background-color: rgba(230, 228, 228, 0.788);
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 1px 2px 3px 1px grey;
+}
+
+.logo {
+    grid-area: l;
+    background-image: url("../img/PizzaCompanyLogo.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: right;
+}
+
+.lnk1 {
+    grid-area: lnk1;
+}
+
+.lnk2 {
+    grid-area: lnk2;
+}
+
+.logout {
+    grid-area: log / reg;
+}
+
+.login {
+    grid-area: log;
+}
+
+.register {
+    grid-area: reg;
+}
+
+.hidden {
+    display: none;
+}
+
+.language_elem {
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    background: #FFFFFF;
+}
+
+#en {
+    grid-area: en;
+}
+
+#ru {
+    grid-area: ru;
+}
+
+.language {
+    text-decoration: none;
+    color: #212121;
+    border: none;
+}
+
+nav {
+    display: grid;
+    background-color: #FFF;
+    text-align: center;
+}
 
 /* Desktop Template */
 @media screen /*and (min-width: 600px)*/
@@ -18,7 +119,7 @@ and (orientation: landscape) {
     .grid {
 
         grid-template-columns: repeat(14, 1fr);
-        grid-template-rows: 45px auto 35px;
+        grid-template-rows: 50px auto 35px;
         grid-template-areas: "h h h h h h h h h h h h h h"
                              ". . . . c c c c c c r r r r"
                              "f f f f f f f f f f f f f f";
@@ -27,11 +128,11 @@ and (orientation: landscape) {
 
     nav {
         grid-template-rows: auto;
-        grid-template-areas: ". . a1 a2 a3 a4 a5 . .";
-        line-height: 45px;
+        grid-template-areas: ". . l l l l lnk1 lnk1 lnk2 lnk2 log log reg reg en ru . .";
+        line-height: 50px;
     }
 
-    .nav a {
+    .nav a, .language_elem  {
         margin: auto;
         height: 100%;
         width: 100%;
@@ -40,16 +141,21 @@ and (orientation: landscape) {
         border-width: 0.5px;
     }
 
+    .language {
+        border-left: 0.5px;
+        border-right: 0.5px;
+    }
+
     .footer {
         line-height: 35px;
     }
 
-    #a1 {
+    .lnk1 {
         border-left-width: 1px;
         border-right-width: 0.5px;
     }
 
-    #a5 {
+    #en {
         border-right-width: 1px;
         border-left-width: 0.5px;
     }
@@ -69,11 +175,14 @@ and (orientation: portrait) {
     nav {
         grid-template-columns: 1fr;
         grid-template-rows: auto;
-        grid-template-areas: "a1"
-                             "a2"
-                             "a3"
-                             "a4"
-                             "a5";
+        grid-template-areas: "l"
+                             "l"
+                             "lnk1"
+                             "lnk2"
+                             "log"
+                             "reg"
+                             "en"
+                             "ru";
         line-height: 2em;
         font-size: 3em;
     }
@@ -92,12 +201,12 @@ and (orientation: portrait) {
         font-size: 2em;
     }
 
-    #a1 {
+    .lnk1 {
         border-top-width: 1px;
         border-bottom-width: 0.5px;
     }
 
-    #a5 {
+    #en {
         border-bottom-width: 1px;
         border-top-width: 0.5px;
     }
