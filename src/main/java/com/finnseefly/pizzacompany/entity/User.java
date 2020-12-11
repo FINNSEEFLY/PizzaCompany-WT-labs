@@ -8,9 +8,36 @@ public class User implements Serializable {
     private  static final long serialVersionUID = -7883421665886134255L;
 
     private long id;
+    private String login;
     private String firstname;
     private String lastname;
     private String email;
+    private Role role;
+
+    public User(long id, String login, String firstname, String lastname, String email, Role role) {
+        this.id = id;
+        this.login = login;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.email = email;
+        this.role = role;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
 
     public long getId() {
         return id;
@@ -50,29 +77,27 @@ public class User implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
         return id == user.id &&
-                firstname.equals(user.firstname) &&
+                login.equals(user.login) &&
+                Objects.equals(firstname, user.firstname) &&
                 Objects.equals(lastname, user.lastname) &&
-                email.equals(user.email);
+                email.equals(user.email) &&
+                role.equals(user.role);
     }
 
     @Override
     public int hashCode() {
-        final int prime = 97;
-        int result = 1;
-        result = prime * result + ((email == null) ? 0 : email.hashCode());
-        result = prime * result + (int) (id ^ (id >>> 32));
-        result = prime * result + ((firstname == null) ? 0 : email.hashCode());
-        result = prime * result + ((lastname == null) ? 0 : lastname.hashCode());
-        return result;
+        return Objects.hash(id, login, firstname, lastname, email, role);
     }
 
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
+                ", login='" + login + '\'' +
                 ", firstname='" + firstname + '\'' +
                 ", lastname='" + lastname + '\'' +
                 ", email='" + email + '\'' +
+                ", role=" + role +
                 '}';
     }
 }

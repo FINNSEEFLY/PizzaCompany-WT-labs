@@ -1,18 +1,18 @@
 package com.finnseefly.pizzacompany.entity;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 public class Pizza implements Serializable {
-    private static final int PIZZA_SIZE_SMALL = 25;
-    private static final int PIZZA_SIZE_MEDIUM = 30;
-    private static final int PIZZA_SIZE_BIG = 35;
     private static final long serialVersionUID = 8925029464127710599L;
 
     private long id;
     private String title;
     private long price;
     private int size;
+    private String imagePath;
+    private List<String> ingredients;
 
     public long getId() {
         return id;
@@ -38,6 +38,30 @@ public class Pizza implements Serializable {
         this.price = price;
     }
 
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
+
+    public List<String> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(List<String> ingredients) {
+        this.ingredients = ingredients;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -46,18 +70,14 @@ public class Pizza implements Serializable {
         return id == pizza.id &&
                 price == pizza.price &&
                 size == pizza.size &&
-                title.equals(pizza.title);
+                title.equals(pizza.title) &&
+                imagePath.equals(pizza.imagePath) &&
+                ingredients.equals(pizza.ingredients);
     }
 
     @Override
     public int hashCode() {
-        final int prime = 97;
-        int result = 1;
-        result = prime * result + (int) (price ^ (price >>> 32));
-        result = prime * result + (int) (id ^ (id >>> 32));
-        result = prime * result + size;
-        result = prime * result + ((title == null) ? 0 : title.hashCode());
-        return result;
+        return Objects.hash(id, title, price, size, imagePath, ingredients);
     }
 
     @Override
@@ -67,6 +87,8 @@ public class Pizza implements Serializable {
                 ", title='" + title + '\'' +
                 ", price=" + price +
                 ", size=" + size +
+                ", imagePath='" + imagePath + '\'' +
+                ", ingredients=" + ingredients +
                 '}';
     }
 }

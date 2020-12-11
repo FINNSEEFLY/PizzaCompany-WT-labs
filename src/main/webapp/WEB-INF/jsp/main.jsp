@@ -8,12 +8,18 @@
 <div class="grid">
     <header class="header">
         <nav class="nav">
-            <%--TODO makenav--%>
+
         </nav>
     </header>
+    <article class="content">
+
+    </article>
+    <section class="rightBox">
+
+    </section>
     <%--TODO content--%>
     <footer class="footer">
-        <%--TODO footer--%>
+        PizzaCompany LLC All rights reserved © 1918-2020
     </footer>
 </div>
 </body>

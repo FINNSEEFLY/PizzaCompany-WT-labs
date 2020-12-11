@@ -9,3 +9,106 @@
     font-family: "Open Sans", serif;
     transition: background-color 0.3s ease;
 }
+
+
+
+/* Desktop Template */
+@media screen /*and (min-width: 600px)*/
+and (orientation: landscape) {
+    .grid {
+
+        grid-template-columns: repeat(14, 1fr);
+        grid-template-rows: 45px auto 35px;
+        grid-template-areas: "h h h h h h h h h h h h h h"
+                             ". . . . c c c c c c r r r r"
+                             "f f f f f f f f f f f f f f";
+
+    }
+
+    nav {
+        grid-template-rows: auto;
+        grid-template-areas: ". . a1 a2 a3 a4 a5 . .";
+        line-height: 45px;
+    }
+
+    .nav a {
+        margin: auto;
+        height: 100%;
+        width: 100%;
+        border-left-style: solid;
+        border-right-style: solid;
+        border-width: 0.5px;
+    }
+
+    .footer {
+        line-height: 35px;
+    }
+
+    #a1 {
+        border-left-width: 1px;
+        border-right-width: 0.5px;
+    }
+
+    #a5 {
+        border-right-width: 1px;
+        border-left-width: 0.5px;
+    }
+}
+
+/* Smartphone Template */
+@media screen /*and (max-width: 600px)*/
+and (orientation: portrait) {
+    .grid {
+        grid-template-rows: auto auto 3em;
+        grid-template-areas:    "h"
+                                "c"
+                                "f";
+        grid-gap: 2em;
+    }
+
+    nav {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        grid-template-areas: "a1"
+                             "a2"
+                             "a3"
+                             "a4"
+                             "a5";
+        line-height: 2em;
+        font-size: 3em;
+    }
+
+    .nav a {
+        margin: auto;
+        height: 100%;
+        width: 100%;
+        border-top-style: solid;
+        border-bottom-style: solid;
+        border-width: 0.5px;
+    }
+
+    .footer {
+        line-height: 2em;
+        font-size: 2em;
+    }
+
+    #a1 {
+        border-top-width: 1px;
+        border-bottom-width: 0.5px;
+    }
+
+    #a5 {
+        border-bottom-width: 1px;
+        border-top-width: 0.5px;
+    }
+
+    .dialogform input,
+    .dialogform textarea {
+        line-height: 2.5em;
+        font-size: 2.5em;
+    }
+
+    .dialogform {
+        width: auto;
+    }
+}
