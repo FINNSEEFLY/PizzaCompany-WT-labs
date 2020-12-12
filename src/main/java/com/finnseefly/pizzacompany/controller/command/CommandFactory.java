@@ -15,6 +15,7 @@ public class CommandFactory {
     public final String goToCartCommand = "go_to_cart";
     public final String goToCabinetCommand = "go_to_cabinet";
     public final String logOutCommand = "log_out";
+    public final String registerCommand = "register";
 
     public CommandFactory() {
         commands.put(goToMainCommand, new GoToMainCommand());
@@ -24,6 +25,7 @@ public class CommandFactory {
         commands.put(goToCartCommand, new GoToCartCommand());
         commands.put(goToCabinetCommand, new GoToCabinetCommand());
         commands.put(logOutCommand, new LogOutCommand());
+        commands.put(registerCommand, new RegisterCommand());
     }
 
     public String getPARAMETER_COMMAND() {

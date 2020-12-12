@@ -22,6 +22,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .nav a:hover, .language_elem:hover {
     background-color: #fbbbbb;
+    cursor: pointer;
 }
 .nav a#active {
     background-color: #ff0000;
@@ -83,6 +84,37 @@ h1, h2, h3, h4, h5, h6 {
 .hidden {
     display: none;
 }
+.content {
+    grid-area: c;
+    background-color: #FFF;
+    border-radius: 5px 5px 15px 15px;
+    box-shadow: 1px 2px 5px 2px gray;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 15px 25px 10px;
+}
+.content #registerContent {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-areas: ". . login . .";
+}
+
+#container-register {
+    grid-area: login;
+}
+
+#register-h3 {
+    padding: 10px;
+}
+
+.container {
+    background-color: #FFF;
+    border-radius: 25px;
+    box-shadow: 1px 2px 5px 2px gray;
+    margin-top: 10px;
+    padding: 15px 25px 10px;
+    position: center;
+}
 
 .language_elem {
     text-decoration: none;
@@ -111,6 +143,54 @@ nav {
     display: grid;
     background-color: #FFF;
     text-align: center;
+}
+
+/* Form Template */
+.decor {
+    position: center;
+    max-width: 400px;
+    margin: 50px auto 0;
+    background: white;
+    border-radius: 30px;
+}
+
+.form-inner {
+    padding: 50px;
+    background-color: #FFF;
+    border-radius: 25px;
+    box-shadow: 1px 2px 5px 2px gray;
+    margin-top: 10px;
+    padding: 15px 25px 10px;
+    position: center;
+}
+.form-inner input{
+    display: block;
+    width: 100%;
+    padding: 0 20px;
+    margin-bottom: 10px;
+    background: #E9EFF6;
+    line-height: 40px;
+    border-width: 0;
+    border-radius: 20px;
+    font-family: 'Roboto', sans-serif;
+    outline: none;
+}
+.form-inner input[type="submit"] {
+    margin-top: 30px;
+    background: #f67373;
+    color: white;
+    font-size: 14px;
+    outline: none;
+}
+.form-inner input[type="submit"]:hover {
+    background: red;
+}
+.form-inner h3 {
+    margin-top: 0;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 24px;
+    color: #707981;
 }
 
 /* Desktop Template */
