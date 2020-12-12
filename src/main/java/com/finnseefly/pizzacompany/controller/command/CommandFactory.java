@@ -16,6 +16,7 @@ public class CommandFactory {
     public final String goToCabinetCommand = "go_to_cabinet";
     public final String logOutCommand = "log_out";
     public final String registerCommand = "register";
+    public final String loginCommand = "login";
 
     public CommandFactory() {
         commands.put(goToMainCommand, new GoToMainCommand());
@@ -26,38 +27,7 @@ public class CommandFactory {
         commands.put(goToCabinetCommand, new GoToCabinetCommand());
         commands.put(logOutCommand, new LogOutCommand());
         commands.put(registerCommand, new RegisterCommand());
-    }
-
-    public String getPARAMETER_COMMAND() {
-        return PARAMETER_COMMAND;
-    }
-
-    public String getGoToMainCommand() {
-        return goToMainCommand;
-    }
-
-    public String getGoToContactsCommand() {
-        return goToContactsCommand;
-    }
-
-    public String getGoToLoginCommand() {
-        return goToLoginCommand;
-    }
-
-    public String getGoToRegisterCommand() {
-        return goToRegisterCommand;
-    }
-
-    public String getGoToCartCommand() {
-        return goToCartCommand;
-    }
-
-    public String getGoToCabinetCommand() {
-        return goToCabinetCommand;
-    }
-
-    public String getLogOutCommand() {
-        return logOutCommand;
+        commands.put(loginCommand, new LoginCommand());
     }
 
     public Command getCommand(String commandName) {

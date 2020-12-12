@@ -70,7 +70,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .logout {
-    grid-area: log / reg;
+    grid-area: aut;
 }
 
 .login {
@@ -84,6 +84,7 @@ h1, h2, h3, h4, h5, h6 {
 .hidden {
     display: none;
 }
+
 .content {
     grid-area: c;
     background-color: #FFF;
@@ -93,17 +94,13 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 10px;
     padding: 15px 25px 10px;
 }
-.content #registerContent {
+.content #registerContent, .content #authContent {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-areas: ". . login . .";
 }
 
-#container-register {
-    grid-area: login;
-}
-
-#register-h3 {
+#register-h3, #auth-h3 {
     padding: 10px;
 }
 
@@ -206,9 +203,16 @@ and (orientation: landscape) {
 
     }
 
+    .aut {
+        grid-area: aut;
+        grid-template-columns: repeat(4,1fr);
+        grid-template-areas: "log log reg reg";
+        display: grid;
+    }
+
     nav {
         grid-template-rows: auto;
-        grid-template-areas: ". . l l l l lnk1 lnk1 lnk2 lnk2 log log reg reg en ru . .";
+        grid-template-areas: ". . l l l l lnk1 lnk1 lnk2 lnk2 aut aut aut aut en ru . .";
         line-height: 50px;
     }
 
@@ -250,6 +254,13 @@ and (orientation: portrait) {
                                 "c"
                                 "f";
         grid-gap: 2em;
+    }
+
+    .aut {
+        grid-area: aut;
+        grid-template-rows: repeat(4,1fr);
+        grid-template-areas: "log" "log" "reg" "reg";
+        display: grid;
     }
 
     nav {

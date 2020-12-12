@@ -14,38 +14,29 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class RegisterCommand implements Command {
+public class LoginCommand implements Command {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String isLoggedIn = (String)request.getSession().getAttribute("isLoggedIn");
-        if(isLoggedIn.equals("false")) {
+        String isLoggedIn = (String) request.getSession().getAttribute("isLoggedIn");
+        if (isLoggedIn.equals("false")) {
             ClientService clientService = ServiceFactory.getInstance().getClientService();
-            UserData user = new UserData();
             String login = request.getParameter("login");
             String pass = request.getParameter("password");
-            String email = request.getParameter("email");
-            String firstname = request.getParameter("firstname");
-            String lastname = request.getParameter("lastname");
-            boolean result = false;
-            if (login != null && pass != null && email != null) {
-                user.setLogin(login);
-                user.setEmail(email);
-                user.setPassword(pass);
-                user.setFirstname(firstname);
-                user.setLastname(lastname);
+            User user = null;
+            if (login != null && pass != null) {
                 try {
-                    result = clientService.registration(user);
+                    user = clientService.authorization(login, pass);
                 } catch (ServiceException e) {
                     //TODO: to process exception
                 }
             }
-            if (result) {
-                request.getSession().setAttribute("isLoggedIn","true");
-                request.getSession().setAttribute("user",new User(user,1));
+            if (user != null) {
+                request.getSession().setAttribute("isLoggedIn", "true");
+                request.getSession().setAttribute("user", user);
                 response.sendRedirect("controller?command=go_to_main");
             } else {
-                RequestDispatcher dispatcher = request.getRequestDispatcher(LinkPath.REGISTER_PAGE);
+                RequestDispatcher dispatcher = request.getRequestDispatcher(LinkPath.LOGIN_PAGE);
                 dispatcher.forward(request, response);
             }
         } else {

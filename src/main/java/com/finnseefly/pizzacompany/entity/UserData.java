@@ -14,26 +14,11 @@ public class UserData implements Serializable {
     private String email;
     private String firstname;
     private String lastname;
-
-    public UserData(int id, String login, String password, String email, String firstname, String surname) {
-        this.id = id;
-        this.login = login;
-        this.password = password;
-        this.email = email;
-        this.firstname = firstname;
-        this.lastname = surname;
-    }
+    private String salt;
+    private int roleId;
 
     public UserData() {
 
-    }
-
-    public UserData(String login, String password, String email, String firstname, String lastname) {
-        this.login = login;
-        this.password = password;
-        this.email = email;
-        this.firstname = firstname;
-        this.lastname = lastname;
     }
 
     public static long getSerialVersionUID() {
@@ -88,30 +73,40 @@ public class UserData implements Serializable {
         this.lastname = lastname;
     }
 
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
+    }
+
+    public int getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(int roleId) {
+        this.roleId = roleId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserData userData = (UserData) o;
         return id == userData.id &&
+                roleId == userData.roleId &&
                 login.equals(userData.login) &&
-                password.equals(userData.password) &&
+                Objects.equals(password, userData.password) &&
                 email.equals(userData.email) &&
-                firstname.equals(userData.firstname) &&
-                Objects.equals(lastname, userData.lastname);
+                Objects.equals(firstname, userData.firstname) &&
+                Objects.equals(lastname, userData.lastname) &&
+                salt.equals(userData.salt);
     }
 
     @Override
     public int hashCode() {
-        final int prime = 97;
-        int result = 1;
-        result = prime * result + ((email == null) ? 0 : email.hashCode());
-        result = prime * result + (int) (id ^ (id >>> 32));
-        result = prime * result + ((login == null) ? 0 : login.hashCode());
-        result = prime * result + ((firstname == null) ? 0 : firstname.hashCode());
-        result = prime * result + ((password == null) ? 0 : password.hashCode());
-        result = prime * result + ((lastname == null) ? 0 : lastname.hashCode());
-        return result;
+        return Objects.hash(id, login, password, email, firstname, lastname, salt, roleId);
     }
 
     @Override
@@ -123,6 +118,8 @@ public class UserData implements Serializable {
                 ", email='" + email + '\'' +
                 ", firstname='" + firstname + '\'' +
                 ", lastname='" + lastname + '\'' +
+                ", salt='" + salt + '\'' +
+                ", roleId=" + roleId +
                 '}';
     }
 }

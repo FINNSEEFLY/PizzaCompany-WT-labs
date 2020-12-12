@@ -12,9 +12,12 @@ public class User implements Serializable {
     private String firstname;
     private String lastname;
     private String email;
-    private Role role;
+    private int role;
 
-    public User(long id, String login, String firstname, String lastname, String email, Role role) {
+    public User() {
+    }
+
+    public User(long id, String login, String firstname, String lastname, String email, int role) {
         this.id = id;
         this.login = login;
         this.firstname = firstname;
@@ -23,11 +26,29 @@ public class User implements Serializable {
         this.role = role;
     }
 
-    public Role getRole() {
+    public User(UserData userData, int roleId) {
+        this.id = userData.getId();
+        this.login = userData.getLogin();
+        this.firstname = userData.getFirstname();
+        this.lastname = userData.getLastname();
+        this.email = userData.getEmail();
+        this.role = roleId;
+    }
+
+    public User(UserData userData) {
+        this.id = userData.getId();
+        this.login = userData.getLogin();
+        this.firstname = userData.getFirstname();
+        this.lastname = userData.getLastname();
+        this.email = userData.getEmail();
+        this.role = userData.getRoleId();
+    }
+
+    public int getRole() {
         return role;
     }
 
-    public void setRole(Role role) {
+    public void setRole(int role) {
         this.role = role;
     }
 
@@ -77,11 +98,11 @@ public class User implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
         return id == user.id &&
+                role == user.role &&
                 login.equals(user.login) &&
                 Objects.equals(firstname, user.firstname) &&
                 Objects.equals(lastname, user.lastname) &&
-                email.equals(user.email) &&
-                role.equals(user.role);
+                email.equals(user.email);
     }
 
     @Override
