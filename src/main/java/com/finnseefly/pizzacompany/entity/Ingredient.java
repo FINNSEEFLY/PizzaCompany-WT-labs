@@ -6,14 +6,12 @@ import java.util.Objects;
 public class Ingredient implements Serializable {
     private int id;
     private String name;
-    private int mass;
-    private String description;
+    private String nameRu;
 
-    public Ingredient(int id, String name, int mass, String description) {
+    public Ingredient(int id, String name, String nameRu) {
         this.id = id;
         this.name = name;
-        this.mass = mass;
-        this.description = description;
+        this.nameRu = nameRu;
     }
 
     public int getId() {
@@ -32,20 +30,13 @@ public class Ingredient implements Serializable {
         this.name = name;
     }
 
-    public int getMass() {
-        return mass;
+
+    public String getNameRu() {
+        return nameRu;
     }
 
-    public void setMass(int mass) {
-        this.mass = mass;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
+    public void setNameRu(String nameRu) {
+        this.nameRu = nameRu;
     }
 
     @Override
@@ -54,14 +45,13 @@ public class Ingredient implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
         Ingredient that = (Ingredient) o;
         return id == that.id &&
-                mass == that.mass &&
                 name.equals(that.name) &&
-                Objects.equals(description, that.description);
+                nameRu.equals(that.nameRu);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, mass, description);
+        return Objects.hash(id, name, nameRu);
     }
 
     @Override
@@ -69,8 +59,7 @@ public class Ingredient implements Serializable {
         return "Ingredient{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", mass=" + mass +
-                ", description='" + description + '\'' +
+                ", nameRu='" + nameRu + '\'' +
                 '}';
     }
 }

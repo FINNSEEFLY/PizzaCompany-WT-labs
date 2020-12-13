@@ -1,6 +1,8 @@
 package com.finnseefly.pizzacompany.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -9,10 +11,24 @@ public class Pizza implements Serializable {
 
     private long id;
     private String title;
-    private long price;
-    private int size;
+    private String titleRu;
+    private List<PizzaSize> sizes = new ArrayList<>();
     private String imagePath;
-    private List<String> ingredients;
+    private List<Ingredient> ingredients = new ArrayList<>();
+
+    public Pizza() {
+    }
+
+    public Pizza(long id, String title, String titleRu, String imagePath) {
+        this.id = id;
+        this.title = title;
+        this.titleRu = titleRu;
+        this.imagePath = imagePath;
+    }
+
+    public void addIngredient(Ingredient ingredient) {
+        ingredients.add(ingredient);
+    }
 
     public long getId() {
         return id;
@@ -30,22 +46,6 @@ public class Pizza implements Serializable {
         this.title = title;
     }
 
-    public long getPrice() {
-        return price;
-    }
-
-    public void setPrice(long price) {
-        this.price = price;
-    }
-
-    public int getSize() {
-        return size;
-    }
-
-    public void setSize(int size) {
-        this.size = size;
-    }
-
     public String getImagePath() {
         return imagePath;
     }
@@ -54,12 +54,31 @@ public class Pizza implements Serializable {
         this.imagePath = imagePath;
     }
 
-    public List<String> getIngredients() {
+    public String getTitleRu() {
+        return titleRu;
+    }
+
+    public void setTitleRu(String titleRu) {
+        this.titleRu = titleRu;
+    }
+
+    public List<Ingredient> getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(List<String> ingredients) {
+    public void setIngredients(List<Ingredient> ingredients) {
         this.ingredients = ingredients;
+    }
+    public void addPizzaSize(PizzaSize pizzaSize) {
+        sizes.add(pizzaSize);
+    }
+
+    public List<PizzaSize> getSizes() {
+        return sizes;
+    }
+
+    public void setSizes(List<PizzaSize> sizes) {
+        this.sizes = sizes;
     }
 
     @Override
@@ -68,16 +87,16 @@ public class Pizza implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
         Pizza pizza = (Pizza) o;
         return id == pizza.id &&
-                price == pizza.price &&
-                size == pizza.size &&
                 title.equals(pizza.title) &&
+                titleRu.equals(pizza.titleRu) &&
+                sizes.equals(pizza.sizes) &&
                 imagePath.equals(pizza.imagePath) &&
                 ingredients.equals(pizza.ingredients);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, title, price, size, imagePath, ingredients);
+        return Objects.hash(id, title, titleRu, sizes, imagePath, ingredients);
     }
 
     @Override
@@ -85,10 +104,12 @@ public class Pizza implements Serializable {
         return "Pizza{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
-                ", price=" + price +
-                ", size=" + size +
+                ", titleRu='" + titleRu + '\'' +
+                ", sizes=" + sizes +
                 ", imagePath='" + imagePath + '\'' +
                 ", ingredients=" + ingredients +
                 '}';
     }
+
+
 }

@@ -19,7 +19,10 @@
         <servlet-name>Controller</servlet-name>
         <servlet-class>com.finnseefly.pizzacompany.controller.Controller</servlet-class>
     </servlet>
-
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>/img/*</url-pattern> <!--Путь к папке-->
+    </servlet-mapping>
 
     <servlet-mapping>
         <servlet-name>Controller</servlet-name>
