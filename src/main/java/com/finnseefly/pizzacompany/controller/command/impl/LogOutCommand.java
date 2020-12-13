@@ -17,6 +17,7 @@ public class LogOutCommand implements Command {
         HttpSession httpSession = request.getSession();
         httpSession.setAttribute("isLoggedIn", "false");
         httpSession.removeAttribute("user");
+        httpSession.removeAttribute("cart");
         response.sendRedirect("controller?command=go_to_main");
     }
 }

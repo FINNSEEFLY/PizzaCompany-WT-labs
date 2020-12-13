@@ -2,6 +2,7 @@ package com.finnseefly.pizzacompany.controller.command.impl;
 
 import com.finnseefly.pizzacompany.controller.LinkPath;
 import com.finnseefly.pizzacompany.controller.command.Command;
+import com.finnseefly.pizzacompany.entity.Cart;
 import com.finnseefly.pizzacompany.entity.User;
 import com.finnseefly.pizzacompany.entity.UserData;
 import com.finnseefly.pizzacompany.service.ClientService;
@@ -43,6 +44,7 @@ public class RegisterCommand implements Command {
             if (result) {
                 request.getSession().setAttribute("isLoggedIn","true");
                 request.getSession().setAttribute("user",new User(user,1));
+                request.getSession().setAttribute("cart", new Cart());
                 response.sendRedirect("controller?command=go_to_main");
             } else {
                 RequestDispatcher dispatcher = request.getRequestDispatcher(LinkPath.REGISTER_PAGE);

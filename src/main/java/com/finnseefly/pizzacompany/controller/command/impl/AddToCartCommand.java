@@ -1,16 +1,12 @@
 package com.finnseefly.pizzacompany.controller.command.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.finnseefly.pizzacompany.controller.LinkPath;
 import com.finnseefly.pizzacompany.controller.command.Command;
 import com.finnseefly.pizzacompany.entity.Cart;
 import com.finnseefly.pizzacompany.entity.CartPosition;
 import com.finnseefly.pizzacompany.entity.Pizza;
 import com.finnseefly.pizzacompany.entity.PizzaSize;
 
-import javax.json.JsonReader;
-import javax.json.JsonStructure;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

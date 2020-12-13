@@ -22,6 +22,14 @@ public class Cart implements Serializable {
         this.positions = positions;
     }
 
+    public int getFinalSum() {
+        int sum = 0;
+        for (CartPosition item:positions) {
+            sum+=item.size.getPrice()*item.numOfPizzas;
+        }
+        return sum;
+    }
+
     public void addPosition(CartPosition position) {
         boolean isAlreadyHere = false;
         for (CartPosition item : positions) {

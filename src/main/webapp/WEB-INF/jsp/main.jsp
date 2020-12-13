@@ -8,6 +8,12 @@
     <c:set var="pizzas" scope="request" value='<%=request.getAttribute("pizzas")%>'/>
     <c:if test="${isLoggedIn=='true'}">
         <c:set var="userInfo" value='<%=request.getSession().getAttribute("user")%>'/>
+        <fmt:message bundle="${loc}" key="local.title.cart" var="cartTitle"/>
+        <fmt:message bundle="${loc}" key="local.rightbox.pizza.size" var="pizzaSizeTitle"/>
+        <fmt:message bundle="${loc}" key="local.rightbox.pizza.price" var="rightPizzaPrice"/>
+        <fmt:message bundle="${loc}" key="local.rightbox.pcs" var="pcs"/>
+        <fmt:message bundle="${loc}" key="local.rightbox.final.price" var="finalPriceTitle"/>
+        <c:set var="cart" value='<%=request.getSession().getAttribute("cart")%>'/>
     </c:if>
     <title>${mainTitle}</title>
 </head>
@@ -59,6 +65,31 @@
             <div class="rightBoxHello">
                 <h3>${hello}</h3>
                 <h4>${userInfo.login}</h4>
+            </div>
+            <div class="cart">
+                <h3>${cartTitle}</h3>
+                <c:forEach var="cPos" items="${cart.positions}">
+                    <div class="cartPosition">
+                        <img class="pizzaImageMini" src="${cPos.pizza.imagePath}">
+                        <div class="cartPizzaInfo">
+                            <h3 class="pizzaInfoTitle">
+                                <c:if test="${lang=='ru'}">
+                                    ${cPos.pizza.titleRu}
+                                </c:if>
+                                <c:if test="${lang=='en'}">
+                                    ${cPos.pizza.title}
+                                </c:if>
+                            </h3>
+                            <h5>
+                                ${pizzaSizeTitle}: ${cPos.size.diameterCm} ${cm}
+                            </h5>
+                            <h5>
+                                ${rightPizzaPrice}: ${cPos.size.price} ${byn} * ${cPos.numOfPizzas} ${pcs} = ${cPos.size.price*cPos.numOfPizzas} ${byn};
+                            </h5>
+                        </div>
+                    </div>
+                </c:forEach>
+                <h3>${finalPriceTitle}: ${cart.finalSum} ${byn}</h3>
             </div>
         </section>
     </c:if>

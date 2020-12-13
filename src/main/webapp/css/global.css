@@ -115,6 +115,34 @@ h1, h2, h3, h4, h5, h6 {
     padding: 10px;
 }
 
+.cart {
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+    gap: 8px;
+    border-radius: 20px;
+    border: 1px solid gray;
+    width: auto;
+    padding: 10px;
+    margin-top: 5px;
+}
+
+.cartPosition {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    border: 1px solid gray;
+    width: auto;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.cartPizzaInfo {
+
+}
+
+.pizzaImageMini {
+    width: 100%;
+}
+
 
 
 .content #registerContent, .content #authContent {
