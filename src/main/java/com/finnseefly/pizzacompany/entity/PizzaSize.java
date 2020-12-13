@@ -1,5 +1,8 @@
 package com.finnseefly.pizzacompany.entity;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -12,6 +15,9 @@ public class PizzaSize implements Serializable {
         this.id = id;
         this.price = price;
         this.diameterCm = diameterCm;
+    }
+
+    public PizzaSize() {
     }
 
     public int getId() {
@@ -55,10 +61,14 @@ public class PizzaSize implements Serializable {
 
     @Override
     public String toString() {
-        return "PizzaSize{" +
-                "id=" + id +
-                ", price=" + price +
-                ", diameter_cm=" + diameterCm +
-                '}';
+        try {
+            return new ObjectMapper().writeValueAsString(this);
+        } catch (JsonProcessingException e) {
+            return "PizzaSize{" +
+                    "id=" + id +
+                    ", price=" + price +
+                    ", diameterCm=" + diameterCm +
+                    '}';
+        }
     }
 }

@@ -4,7 +4,11 @@
     <fmt:message bundle="${loc}" key="local.title.main" var="mainTitle"/>
     <fmt:message bundle="${loc}" key="local.input.form.price.cm" var="cm"/>
     <fmt:message bundle="${loc}" key="local.input.form.price.byn" var="byn"/>
+    <fmt:message bundle="${loc}" key="local.rightbox.hello" var="hello"/>
     <c:set var="pizzas" scope="request" value='<%=request.getAttribute("pizzas")%>'/>
+    <c:if test="${isLoggedIn=='true'}">
+        <c:set var="userInfo" value='<%=request.getSession().getAttribute("user")%>'/>
+    </c:if>
     <title>${mainTitle}</title>
 </head>
 <body>
@@ -37,9 +41,10 @@
                     </div>
                     <div class="buyButtons">
                         <c:forEach var="size" items="${pizza.sizes}">
-                            <form class="form-price" method="post" action="controller?command=add_to_card">
-                                <input type="hidden" class="pizzaButton" name="pizza" value="${pizza}"/>
-                                <input type="hidden" class="pizzaButton" name="size_id" value="${size.id}"/>
+                            <form class="form-price" method="post" <c:if
+                                    test="${isLoggedIn=='true'}"> action="controller?command=add_to_cart"</c:if>>
+                                <input type="hidden" class="pizzaButton" name="pizza" value=${pizza}/>
+                                <input type="hidden" class="pizzaButton" name="size" value=${size}/>
                                 <input type="submit" class="pizzaButton"
                                        value="${size.diameterCm} ${cm} | ${size.price} ${byn} "/>
                             </form>
@@ -49,9 +54,14 @@
             </c:forEach>
         </section>
     </article>
-    <section class="rightBox">
-
-    </section>
+    <c:if test="${isLoggedIn=='true'}">
+        <section class="rightBox">
+            <div class="rightBoxHello">
+                <h3>${hello}</h3>
+                <h4>${userInfo.login}</h4>
+            </div>
+        </section>
+    </c:if>
     <%@include file="footer.jsp" %>
 </div>
 </body>

@@ -26,9 +26,6 @@
             </div>
         </form>
     </article>
-    <section class="rightBox">
-
-    </section>
     <%@include file="footer.jsp" %>
 </div>
 </body>

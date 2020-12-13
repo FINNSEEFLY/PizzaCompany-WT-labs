@@ -1,5 +1,8 @@
 package com.finnseefly.pizzacompany.entity;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
@@ -15,6 +18,9 @@ public class Transaction implements Serializable {
         this.bankAccount = bankAccount;
         this.date = date;
         this.sum = sum;
+    }
+
+    public Transaction() {
     }
 
     public int getId() {
@@ -67,12 +73,16 @@ public class Transaction implements Serializable {
 
     @Override
     public String toString() {
-        return "Transaction{" +
-                "id=" + id +
-                ", bankAccount=" + bankAccount +
-                ", date=" + date +
-                ", sum=" + sum +
-                '}';
+        try {
+            return new ObjectMapper().writeValueAsString(this);
+        } catch (JsonProcessingException e) {
+            return "Transaction{" +
+                    "id=" + id +
+                    ", bankAccount=" + bankAccount +
+                    ", date=" + date +
+                    ", sum=" + sum +
+                    '}';
+        }
     }
 }
 

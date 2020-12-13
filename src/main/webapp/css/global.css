@@ -93,11 +93,30 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 10px;
     margin-bottom: 10px;
     padding: 15px 25px 10px;
+    gap: 10px;
 }
 
 .rightBox {
     grid-area: r;
+    display: table;
+    background-color: #FFF;
+    border-radius: 15px 15px 15px 15px;
+    box-shadow: 1px 2px 5px 2px gray;
+    padding: 15px 25px 10px;
+    margin: 15px;
+    padding: 20px;
+
 }
+.rightBoxHello {
+    display: block;
+    border-radius: 20px;
+    border: 1px solid gray;
+    width: auto;
+    padding: 10px;
+}
+
+
+
 .content #registerContent, .content #authContent {
     display: grid;
     grid-template-columns: repeat(5, 1fr);

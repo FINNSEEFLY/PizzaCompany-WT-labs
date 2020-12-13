@@ -1,5 +1,8 @@
 package com.finnseefly.pizzacompany.entity;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.io.Serializable;
 
 import java.util.Objects;
@@ -18,7 +21,6 @@ public class UserData implements Serializable {
     private int roleId;
 
     public UserData() {
-
     }
 
     public static long getSerialVersionUID() {
@@ -111,15 +113,19 @@ public class UserData implements Serializable {
 
     @Override
     public String toString() {
-        return "UserData{" +
-                "id=" + id +
-                ", login='" + login + '\'' +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                ", firstname='" + firstname + '\'' +
-                ", lastname='" + lastname + '\'' +
-                ", salt='" + salt + '\'' +
-                ", roleId=" + roleId +
-                '}';
+        try {
+            return new ObjectMapper().writeValueAsString(this);
+        } catch (JsonProcessingException e) {
+            return "UserData{" +
+                    "id=" + id +
+                    ", login='" + login + '\'' +
+                    ", password='" + password + '\'' +
+                    ", email='" + email + '\'' +
+                    ", firstname='" + firstname + '\'' +
+                    ", lastname='" + lastname + '\'' +
+                    ", salt='" + salt + '\'' +
+                    ", roleId=" + roleId +
+                    '}';
+        }
     }
 }

@@ -6,3 +6,5 @@
 <c:set var="lang" value='<%=request.getSession().getAttribute("lang")%>'/>
 <fmt:setLocale value='<%=request.getSession().getAttribute("lang")%>'/>
 <fmt:setBundle basename="locale" var="loc"/>
+<c:set var="isLoggedIn" scope="request" value='<%=request.getSession().getAttribute("isLoggedIn")%>'/>
+<c:set var="thisPage" scope="request" value='<%=request.getParameter("command")%>'/>

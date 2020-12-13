@@ -5,8 +5,6 @@
 <fmt:message bundle="${loc}" key="local.nav.login" var="linkLogInPage"/>
 <fmt:message bundle="${loc}" key="local.nav.register" var="linkRegisterPage"/>
 <fmt:message bundle="${loc}" key="local.nav.logout" var="linkLogOut"/>
-<c:set var="isLoggedIn" scope="request" value='<%=request.getSession().getAttribute("isLoggedIn")%>'/>
-<c:set var="thisPage" scope="request" value='<%=request.getParameter("command")%>'/>
 <header class="header">
     <nav class="nav">
         <div class="logo"></div>

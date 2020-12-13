@@ -1,5 +1,8 @@
 package com.finnseefly.pizzacompany.entity;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -101,14 +104,18 @@ public class Order implements Serializable {
 
     @Override
     public String toString() {
-        return "Order{" +
-                "id=" + id +
-                ", status='" + status + '\'' +
-                ", date=" + date +
-                ", price=" + price +
-                ", userId=" + userId +
-                ", transactionId=" + transactionId +
-                ", pizzas=" + pizzas +
-                '}';
+        try {
+            return new ObjectMapper().writeValueAsString(this);
+        } catch (JsonProcessingException e) {
+            return "Order{" +
+                    "id=" + id +
+                    ", status='" + status + '\'' +
+                    ", date=" + date +
+                    ", price=" + price +
+                    ", userId=" + userId +
+                    ", transactionId=" + transactionId +
+                    ", pizzas=" + pizzas +
+                    '}';
+        }
     }
 }

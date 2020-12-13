@@ -1,8 +1,11 @@
 package com.finnseefly.pizzacompany.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -100,17 +103,20 @@ public class Pizza implements Serializable {
         return Objects.hash(id, title, titleRu, sizes, imagePath, ingredients);
     }
 
+
     @Override
     public String toString() {
-        return "Pizza{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", titleRu='" + titleRu + '\'' +
-                ", sizes=" + sizes +
-                ", imagePath='" + imagePath + '\'' +
-                ", ingredients=" + ingredients +
-                '}';
+        try {
+            return new ObjectMapper().writeValueAsString(this);
+        } catch (JsonProcessingException e) {
+            return "Pizza{" +
+                    "id=" + id +
+                    ", title='" + title + '\'' +
+                    ", titleRu='" + titleRu + '\'' +
+                    ", sizes=" + sizes +
+                    ", imagePath='" + imagePath + '\'' +
+                    ", ingredients=" + ingredients +
+                    '}';
+        }
     }
-
-
 }
