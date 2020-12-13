@@ -26,6 +26,7 @@ public class Pizza implements Serializable {
         this.imagePath = imagePath;
     }
 
+
     public void addIngredient(Ingredient ingredient) {
         ingredients.add(ingredient);
     }

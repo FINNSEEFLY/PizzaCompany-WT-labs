@@ -25,7 +25,8 @@ public class SQLPizzaDAO implements PizzaDAO {
     @Override
     public List<Pizza> getAllPizzas() throws DAOException {
         List<Pizza> pizzas = new ArrayList<>();
-        try (Connection connection = connectionPool.takeConnection()) {
+        try {
+            Connection connection = connectionPool.takeConnection();
             try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_GET_PIZZAS)) {
                 ResultSet resultSet = preparedStatement.executeQuery();
                 if (!resultSet.next()) return null;
@@ -40,14 +41,15 @@ public class SQLPizzaDAO implements PizzaDAO {
             } catch (SQLException e) {
                 throw new DAOException(e);
             }
-        } catch (ConnectionPoolException | SQLException e) {
+        } catch (ConnectionPoolException e) {
             throw new DAOException(e);
         }
     }
 
     @Override
     public List<Pizza> getIngredientsForPizzas(List<Pizza> pizzas) throws DAOException {
-        try (Connection connection = connectionPool.takeConnection()) {
+        try {
+            Connection connection = connectionPool.takeConnection();
             try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_GET_INGREDIENTS_BY_PIZZA_ID)) {
                 for (Pizza pizza : pizzas) {
                     String id = String.valueOf(pizza.getId());
@@ -65,14 +67,15 @@ public class SQLPizzaDAO implements PizzaDAO {
             } catch (SQLException e) {
                 throw new DAOException(e);
             }
-        } catch (ConnectionPoolException | SQLException e) {
+        } catch (ConnectionPoolException e) {
             throw new DAOException(e);
         }
     }
 
     @Override
     public List<Pizza> getSizesForPizzas(List<Pizza> pizzas) throws DAOException {
-        try (Connection connection = connectionPool.takeConnection()) {
+        try {
+            Connection connection = connectionPool.takeConnection();
             try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_GET_PRICE_AND_SIZES_BY_PIZZA_ID)) {
                 for (Pizza pizza : pizzas) {
                     preparedStatement.setString(1, String.valueOf(pizza.getId()));
@@ -89,7 +92,7 @@ public class SQLPizzaDAO implements PizzaDAO {
             } catch (SQLException e) {
                 throw new DAOException(e);
             }
-        }catch (ConnectionPoolException | SQLException e) {
+        } catch (ConnectionPoolException e) {
             throw new DAOException(e);
         }
     }

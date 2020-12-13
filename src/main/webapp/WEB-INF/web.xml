@@ -23,6 +23,10 @@
         <servlet-name>default</servlet-name>
         <url-pattern>/img/*</url-pattern> <!--Путь к папке-->
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>/css/*</url-pattern> <!--Путь к папке-->
+    </servlet-mapping>
 
     <servlet-mapping>
         <servlet-name>Controller</servlet-name>

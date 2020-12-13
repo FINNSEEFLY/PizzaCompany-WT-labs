@@ -23,6 +23,7 @@ public class GoToMainCommand implements Command {
         PizzaService pizzaService = new PizzaServiceImpl();
         try {
             List<Pizza> pizzas = pizzaService.getAllPizzas();
+            request.setAttribute("pizzas",pizzas);
         } catch (ServiceException e) {
 
         }

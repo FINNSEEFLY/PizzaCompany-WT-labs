@@ -20,7 +20,8 @@ public class SQLUserDAO implements UserDAO {
 
     @Override
     public UserData getUser(String login) throws DAOException {
-        try (Connection connection = connectionPool.takeConnection()) {
+        try {
+            Connection connection = connectionPool.takeConnection();
             try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_GET_USER)) {
                 preparedStatement.setString(1, login);
                 ResultSet resultSet = preparedStatement.executeQuery();
@@ -38,14 +39,15 @@ public class SQLUserDAO implements UserDAO {
             } catch (SQLException e) {
                 throw new DAOException(e);
             }
-        } catch (ConnectionPoolException | SQLException e) {
+        } catch (ConnectionPoolException e) {
             throw new DAOException(e);
         }
     }
 
     @Override
     public boolean registration(UserData userData, String hashedPass) throws DAOException {
-        try (Connection connection = connectionPool.takeConnection()) {
+        try {
+            Connection connection = connectionPool.takeConnection();
             try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_ADD_NEW_USER)) {
                 preparedStatement.setString(1, userData.getLogin());
                 preparedStatement.setString(2, userData.getFirstname());
@@ -59,7 +61,7 @@ public class SQLUserDAO implements UserDAO {
             } catch (SQLException e) {
                 throw new DAOException(e);
             }
-        } catch (ConnectionPoolException | SQLException e) {
+        } catch (ConnectionPoolException e) {
             throw new DAOException(e);
         }
     }

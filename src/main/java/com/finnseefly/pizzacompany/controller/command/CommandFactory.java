@@ -17,6 +17,7 @@ public class CommandFactory {
     public final String logOutCommand = "log_out";
     public final String registerCommand = "register";
     public final String loginCommand = "login";
+    public final String addToCartCommand = "add_to_cart";
 
     public CommandFactory() {
         commands.put(goToMainCommand, new GoToMainCommand());
@@ -28,6 +29,7 @@ public class CommandFactory {
         commands.put(logOutCommand, new LogOutCommand());
         commands.put(registerCommand, new RegisterCommand());
         commands.put(loginCommand, new LoginCommand());
+        commands.put(addToCartCommand, new AddToCartCommand());
     }
 
     public Command getCommand(String commandName) {
