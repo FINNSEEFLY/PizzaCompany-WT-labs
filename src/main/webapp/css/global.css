@@ -126,6 +126,10 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 5px;
 }
 
+.cart:hover {
+    background: #ffa7a7;
+}
+
 .cartPosition {
     display: grid;
     grid-template-columns: 1fr 4fr;
@@ -143,7 +147,41 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
 }
 
+.cartLink {
+    text-decoration: none;
+}
 
+.cart-wrapper {
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+    gap: 15px;
+    margin: 15px;
+}
+
+.cartBox {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    gap: 15px;
+    margin: 15px;
+    border: 1px solid gray;
+    width: auto;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.pizzaName {
+    font-size: 1.7em;
+    font-weight: bold;
+}
+
+.cartPizzaInfoBig {
+    font-size: 1.4em;
+}
+
+.bigHeader {
+    font-size: 2em;
+    font-weight: bold;
+}
 
 .content #registerContent, .content #authContent {
     display: grid;
@@ -298,6 +336,7 @@ nav {
 }
 
 .ingredient {
+    display: table;
     border-radius: 25px 25px 25px 25px;
     box-shadow: 1px 2px 5px 2px gray;
     padding: 4px 4px 4px 4px;

@@ -25,9 +25,8 @@ public class AddToCartCommand implements Command {
         }
         String requestPizza = request.getParameter("pizza");
         String requestSize = request.getParameter("size");
-        ObjectMapper objectMapper = new ObjectMapper();
-        Pizza pizza = objectMapper.readValue(requestPizza,Pizza.class);
-        PizzaSize size = objectMapper.readValue(requestSize,PizzaSize.class);
+        Pizza pizza = Pizza.getPizzaFromJson(requestPizza);
+        PizzaSize size = PizzaSize.getPizzaSizeFromJson(requestSize);
         if (pizza!=null && size!=null) {
             cart.addPosition(new CartPosition(pizza,size));
         }

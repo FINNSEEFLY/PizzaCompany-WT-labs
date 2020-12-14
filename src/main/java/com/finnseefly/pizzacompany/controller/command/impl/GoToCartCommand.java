@@ -13,7 +13,11 @@ public class GoToCartCommand implements Command {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher(LinkPath.CART_PAGE);
-        dispatcher.forward(request, response);
+        if (request.getSession().getAttribute("isLoggedIn") == "true") {
+            RequestDispatcher dispatcher = request.getRequestDispatcher(LinkPath.CART_PAGE);
+            dispatcher.forward(request, response);
+        } else {
+            response.sendRedirect("controller?command=go_to_main");
+        }
     }
 }

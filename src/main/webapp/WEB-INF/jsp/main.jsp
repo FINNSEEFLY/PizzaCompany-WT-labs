@@ -66,31 +66,34 @@
                 <h3>${hello}</h3>
                 <h4>${userInfo.login}</h4>
             </div>
-            <div class="cart">
-                <h3>${cartTitle}</h3>
-                <c:forEach var="cPos" items="${cart.positions}">
-                    <div class="cartPosition">
-                        <img class="pizzaImageMini" src="${cPos.pizza.imagePath}">
-                        <div class="cartPizzaInfo">
-                            <h3 class="pizzaInfoTitle">
-                                <c:if test="${lang=='ru'}">
-                                    ${cPos.pizza.titleRu}
-                                </c:if>
-                                <c:if test="${lang=='en'}">
-                                    ${cPos.pizza.title}
-                                </c:if>
-                            </h3>
-                            <h5>
-                                ${pizzaSizeTitle}: ${cPos.size.diameterCm} ${cm}
-                            </h5>
-                            <h5>
-                                ${rightPizzaPrice}: ${cPos.size.price} ${byn} * ${cPos.numOfPizzas} ${pcs} = ${cPos.size.price*cPos.numOfPizzas} ${byn};
-                            </h5>
+            <a href="controller?command=go_to_cart" class="cartLink">
+                <div class="cart">
+                    <h3>${cartTitle}</h3>
+                    <c:forEach var="cPos" items="${cart.positions}">
+                        <div class="cartPosition">
+                            <img class="pizzaImageMini" src="${cPos.pizza.imagePath}">
+                            <div class="cartPizzaInfo">
+                                <h3 class="pizzaInfoTitle">
+                                    <c:if test="${lang=='ru'}">
+                                        ${cPos.pizza.titleRu}
+                                    </c:if>
+                                    <c:if test="${lang=='en'}">
+                                        ${cPos.pizza.title}
+                                    </c:if>
+                                </h3>
+                                <h5>
+                                        ${pizzaSizeTitle}: ${cPos.size.diameterCm} ${cm}
+                                </h5>
+                                <h5>
+                                        ${rightPizzaPrice}: ${cPos.size.price} ${byn} * ${cPos.numOfPizzas} ${pcs}
+                                    = ${cPos.size.price*cPos.numOfPizzas} ${byn};
+                                </h5>
+                            </div>
                         </div>
-                    </div>
-                </c:forEach>
-                <h3>${finalPriceTitle}: ${cart.finalSum} ${byn}</h3>
-            </div>
+                    </c:forEach>
+                    <h3>${finalPriceTitle}: ${cart.finalSum} ${byn}</h3>
+                </div>
+            </a>
         </section>
     </c:if>
     <%@include file="footer.jsp" %>

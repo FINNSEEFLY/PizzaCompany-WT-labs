@@ -20,7 +20,7 @@ public class SQLPizzaDAO implements PizzaDAO {
 
     private static final String SQL_GET_PIZZAS = "SELECT * FROM pizza";
     private static final String SQL_GET_INGREDIENTS_BY_PIZZA_ID = "SELECT i.id, i.name_ru, i.name FROM ingredient AS i,(SELECT ingredient_id FROM ingredient_pizza WHERE pizza_id = ?) AS ipii WHERE i.id = ipii.ingredient_id";
-    private static final String SQL_GET_PRICE_AND_SIZES_BY_PIZZA_ID = "SELECT p.id, p.diameter_cm, price FROM pizza_size AS p, (SELECT size_id, price FROM size_pizza_price WHERE pizza_id = ?) AS sppsi WHERE p.id = sppsi.size_id";
+    private static final String SQL_GET_PRICE_AND_SIZES_BY_PIZZA_ID = "SELECT p.id, p.diameter_cm, price, sppsi.id FROM pizza_size AS p, (SELECT size_id, id, price FROM size_pizza_price AS spp WHERE pizza_id = ?) AS sppsi WHERE p.id = sppsi.size_id";
 
     @Override
     public List<Pizza> getAllPizzas() throws DAOException {
@@ -84,7 +84,8 @@ public class SQLPizzaDAO implements PizzaDAO {
                     do {
                         pizza.addPizzaSize(new PizzaSize(Integer.parseInt(resultSet.getString("id")),
                                 Integer.parseInt(resultSet.getString("price")),
-                                Integer.parseInt(resultSet.getString("diameter_cm"))));
+                                Integer.parseInt(resultSet.getString("diameter_cm")),
+                                Integer.parseInt(resultSet.getString("sppsi.id"))));
                     } while (resultSet.next());
                 }
                 connectionPool.returnConnection(connection);

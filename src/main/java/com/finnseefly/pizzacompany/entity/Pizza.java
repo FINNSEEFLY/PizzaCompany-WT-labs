@@ -2,7 +2,9 @@ package com.finnseefly.pizzacompany.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -27,6 +29,17 @@ public class Pizza implements Serializable {
         this.title = title;
         this.titleRu = titleRu;
         this.imagePath = imagePath;
+    }
+
+    public static Pizza getPizzaFromJson(String json) {
+        try {
+            Pizza pizza = new ObjectMapper().readValue(json, Pizza.class);
+            pizza.title = pizza.title.replace('_',' ');
+            pizza.titleRu = pizza.titleRu.replace('_',' ');
+            return pizza;
+        } catch (JsonProcessingException e) {
+            return null;
+        }
     }
 
 
@@ -107,6 +120,8 @@ public class Pizza implements Serializable {
     @Override
     public String toString() {
         try {
+            title=title.replace(' ','_');
+            titleRu=titleRu.replace(' ','_');
             return new ObjectMapper().writeValueAsString(this);
         } catch (JsonProcessingException e) {
             return "Pizza{" +
