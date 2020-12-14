@@ -18,6 +18,7 @@ public class CommandFactory {
     public final String registerCommand = "register";
     public final String loginCommand = "login";
     public final String addToCartCommand = "add_to_cart";
+    public final String editCartPositionCommand = "edit_cart";
 
     public CommandFactory() {
         commands.put(goToMainCommand, new GoToMainCommand());
@@ -30,6 +31,7 @@ public class CommandFactory {
         commands.put(registerCommand, new RegisterCommand());
         commands.put(loginCommand, new LoginCommand());
         commands.put(addToCartCommand, new AddToCartCommand());
+        commands.put(editCartPositionCommand, new EditCartPositionCommand());
     }
 
     public Command getCommand(String commandName) {

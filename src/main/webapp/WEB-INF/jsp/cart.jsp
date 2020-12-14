@@ -43,6 +43,18 @@
                             = ${cPos.size.price*cPos.numOfPizzas} ${byn};
                         </a>
                     </div>
+                    <div class="pizzaNumberControl">
+                        <form method="post" action="controller?command=edit_cart">
+                            <input type="hidden" name="action" value="minus">
+                            <input type="hidden" name="cartPos" value=${cPos}>
+                            <input type="submit" class="buttonEditCart" id="minus" value="-">
+                        </form>
+                        <form method="post" action="controller?command=edit_cart">
+                            <input type="hidden" name="action" value="plus">
+                            <input type="hidden" name="cartPos" value=${cPos}>
+                            <input type="submit" class="buttonEditCart" id="plus" value="+">
+                        </form>
+                    </div>
                 </div>
             </c:forEach>
             <a class="bigHeader">${finalPriceTitle}: ${cart.finalSum} ${byn}</a>

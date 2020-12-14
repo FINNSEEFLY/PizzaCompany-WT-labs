@@ -4,7 +4,6 @@ import com.finnseefly.pizzacompany.controller.LinkPath;
 import com.finnseefly.pizzacompany.controller.command.Command;
 import com.finnseefly.pizzacompany.entity.Cart;
 import com.finnseefly.pizzacompany.entity.User;
-import com.finnseefly.pizzacompany.entity.UserData;
 import com.finnseefly.pizzacompany.service.ClientService;
 import com.finnseefly.pizzacompany.service.ServiceException;
 import com.finnseefly.pizzacompany.service.ServiceFactory;
